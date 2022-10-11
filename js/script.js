@@ -50,9 +50,10 @@ function generateTitleLinks(){
         /* insert link into titleList */
         titleList.insertAdjacentHTML('beforeend', linkHTML);
     }
+    const links = document.querySelectorAll('.titles a');
+    for (let link of links) {
+        link.addEventListener('click', titleClickHandler);
+    }
 }
+
 generateTitleLinks();
-const links = document.querySelectorAll('.titles a');
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
-}
