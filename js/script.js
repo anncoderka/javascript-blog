@@ -121,16 +121,12 @@ function generateTags() {
             /* add generated code to html variable */
             const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
             html = html + linkHTML + '\n';
-            /* [NEW] check if this link is NOT already in allTags */
-            if (!allTags.hasOwnProperty(tag)) {
-                /* [NEW] add generated code to allTags array */
+            if (!Object.prototype.hasOwnProperty.call(allTags, tag)) {
                 allTags[tag] = 1;
             } else {
                 allTags[tag]++;
             }
         }
-        /* END LOOP: for each tag */
-        /* insert HTML of all the links into the tags wrapper */
         tagList.insertAdjacentHTML('beforeend', html);
     }
     const tagListMenu = document.querySelector(select.rightMenu.tags);
@@ -192,7 +188,7 @@ function generateAuthors() {
         const author = article.getAttribute('data-author');
         const html = 'by <a href="#author-' + author + '">' + author + '</a>';
         authorWrapper.innerHTML = html;
-        if (!allAuthors.hasOwnProperty(author)) {
+        if (!Object.prototype.hasOwnProperty.call(allAuthors, author)) {
             allAuthors[author] = 1;
         } else {
             allAuthors[author]++;
