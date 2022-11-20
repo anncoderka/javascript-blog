@@ -117,7 +117,7 @@ function generateTags() {
             const linkHTMLData = { tag: tag };
             const linkHTML = templates.tagLink(linkHTMLData);
             html = html + linkHTML + '\n';
-            if (!Object.prototype.hasOwnProperty.call(allTags, tag)) {
+            if (!allTags[tag]) {
                 allTags[tag] = 1;
             } else {
                 allTags[tag]++;
@@ -187,12 +187,11 @@ function generateAuthors() {
         const linkHTMLData = { author: author };
         const linkHTML = templates.authorLink(linkHTMLData);
         authorWrapper.innerHTML = linkHTML;
-        if (!Object.prototype.hasOwnProperty.call(allAuthors, author)) {
+        if (!allAuthors[author]) {
             allAuthors[author] = 1;
         } else {
             allAuthors[author]++;
         }
-        
     }
     const allAuthorsData = { authors: [] };
     const authorsListMenu = document.querySelector(select.rightMenu.authors);
